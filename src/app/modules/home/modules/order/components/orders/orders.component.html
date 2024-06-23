@@ -1,0 +1,44 @@
+<div class="orders-container">
+  <div *ngFor="let order of paginatedOrders" class="order-card">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Table {{ order.tableNumber }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let item of order.items">
+            {{ item.item }} x {{ item.quantity }}
+          </li>
+        </ul>
+      </mat-card-content>
+      <!-- <mat-card-footer>
+        <p>{{ order.customerName }} - {{ order.customerPhone }}</p> -->
+        <!-- <button mat-button 
+        [ngClass]="{'active-btn': order.status === 'active', 'inactive-btn': order.status === 'inactive'}" 
+        (click)="updateOrderStatus(order)">
+  Mark order served  <mat-icon>check_circle</mat-icon>
+</button> -->
+
+
+
+      <!-- </mat-card-footer> -->
+      <mat-card-footer>
+        <p>{{ order.customerName }} - {{ order.customerPhone }}</p>
+        <button mat-button 
+                [ngClass]="{'active-btn': order.status === 'active', 'inactive-btn': order.status === 'inactive'}" 
+                (click)="updateOrderStatus(order)">
+          Mark order served 
+          <span *ngIf="order.status === 'active'">
+            <mat-icon>check_circle</mat-icon>
+          </span>
+        </button>
+      </mat-card-footer>
+      
+    </mat-card>
+  </div>
+
+  <div class="pagination-controls">
+    <button mat-button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <button mat-button (click)="nextPage()" [disabled]="currentPage * ordersPerPage >= orders.length">Next</button>
+  </div>
+</div>

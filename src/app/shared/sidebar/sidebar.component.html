@@ -1,0 +1,12 @@
+
+<div class="menu-container">
+    <div class="menu-left">
+      <img src="assets/snowtableratri.png" alt="Logo">
+      <div class="menu-buttons" *ngFor="let menu of menuList">
+         <div (click)="navigateaRoute($event)" routerLinkActive="active"  [routerLink]="menu.routerLink">
+          {{ menu.name }}
+         </div> 
+        </div>
+    </div>
+  </div>
+  

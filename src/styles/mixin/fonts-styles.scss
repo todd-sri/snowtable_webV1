@@ -1,0 +1,127 @@
+@mixin font-family-roboto-light {
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
+@mixin font-family-sans-serif {
+    font-family: sans-serif;
+}
+
+@mixin font-weight-normal {
+    font-weight: normal;
+}
+
+@mixin font-weight-bold {
+    font-weight: bold;
+}
+
+// Font size start
+
+@mixin font64 {
+    font-size: 64px;
+}
+
+@mixin font58 {
+    font-size: 58px;
+}
+
+@mixin font50 {
+    font-size: 50px;
+}
+
+@mixin font48 {
+    font-size: 48px;
+}
+
+@mixin font45 {
+    font-size: 45px;
+}
+
+@mixin font40 {
+    font-size: 40px;
+}
+
+@mixin font36 {
+    font-size: 36px;
+}
+
+@mixin font35 {
+    font-size: 35px;
+}
+
+@mixin font32 {
+    font-size: 32px;
+}
+
+@mixin font30 {
+    font-size: 30px;
+}
+
+@mixin font27 {
+    font-size: 27px;
+}
+
+@mixin font26 {
+    font-size: 26px;
+}
+
+@mixin font25 {
+    font-size: 25px;
+}
+
+@mixin font24 {
+    font-size: 24px;
+}
+
+@mixin font22 {
+    font-size: 22px;
+}
+
+@mixin font21 {
+    font-size: 21px;
+}
+
+@mixin font20 {
+    font-size: 20px;
+}
+
+@mixin font19 {
+    font-size: 19px;
+}
+
+@mixin font18 {
+    font-size: 18px;
+}
+
+@mixin font17 {
+    font-size: 17px;
+}
+
+@mixin font16 {
+    font-size: 16px;
+}
+
+@mixin font15 {
+    font-size: 15px;
+}
+
+@mixin font14 {
+    font-size: 14px;
+}
+
+@mixin font13 {
+    font-size: 13px;
+}
+
+@mixin font12 {
+    font-size: 12px;
+}
+
+@mixin font11 {
+    font-size: 11px;
+}
+
+@mixin font9 {
+    font-size: 9px;
+}
+// Font size End

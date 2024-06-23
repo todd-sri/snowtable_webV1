@@ -1,0 +1,40 @@
+<!-- 
+<div class="header">
+    <div class="header-right">
+      <button class="header-button profile-info">
+        Account
+      </button>
+      <button class="header-button logout" (click)="onLogout()">
+       Logout
+      </button>
+    </div>
+  </div>
+   -->
+   
+
+
+  <!-- <div class="header">
+    <div class="header-right">
+      <button class="header-button profile-info">
+        Account
+      </button>
+      <button class="header-button logout" (click)="onLogout()">
+        Logout
+      </button>
+    </div>
+  </div>
+ -->
+
+ <div class="header">
+    <div class="header-right">
+      <div class="profile-button">
+        <button class="header-button profile-info" (click)="togglePopup()">
+          <img src="/assets/snow.jpg" alt="Profile Picture" class="profile-picture">
+        </button>
+        <div class="popup-container" *ngIf="showPopup">
+          <app-profile-popup (logOut)="onLogout()"></app-profile-popup>
+        </div>
+      </div>
+    </div>
+  </div>
+  

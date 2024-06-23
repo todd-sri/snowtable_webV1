@@ -1,0 +1,67 @@
+.orders-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .order-card {
+    flex: 1 1 calc(33.333% - 16px);
+    box-sizing: border-box;
+    line-height: 1.8rem;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .active-btn {
+    background-color: green;
+    color: white;
+  }
+  
+  .inactive-btn {
+    background-color: red;
+    color: white;
+  }
+  
+  .mat-mdc-card-header {
+    background-color: orange;
+  }
+
+.mat-mdc-card-title {
+    font-size: 29px;
+    font-family: serif;
+    font-weight: bold;
+    padding-bottom: 12px;
+  }
+
+  /* Apply this to all <mat-card-content> elements */
+mat-card-content {
+  height: 125px; /* Set the height as needed */
+  overflow-y: auto; /* Scroll vertically if content overflows */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Optional: Add padding or margin if needed */
+mat-card-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+mat-card-footer {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: inherit;
+}
+
+mat-icon {
+  vertical-align: middle; /* Align the icon vertically with the text */
+  margin-left: 4px; /* Adjust margin as needed to separate icon from text */
+}
+.active-btn {
+  background-color: #252121;
+  color: #fff !important;
+}
