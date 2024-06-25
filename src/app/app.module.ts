@@ -12,9 +12,6 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GridModule } from '@progress/kendo-angular-grid';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { CalendarModule } from '@progress/kendo-angular-dateinputs'; 
 import { AgGridModule } from 'ag-grid-angular';
 import { StatusToggleComponent } from './modules/home/modules/menu/components/status-toggle/status-toggle.component';
 import { PageHeaderComponent } from './shared/page-header/page-header.component';
@@ -38,9 +35,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     CommonModule,
     GoogleSigninButtonModule,
     BrowserAnimationsModule,
-    GridModule,
-    ButtonsModule,
-    CalendarModule,
     AgGridModule
 
   ],

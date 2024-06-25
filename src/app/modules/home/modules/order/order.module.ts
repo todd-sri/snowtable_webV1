@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { OrderRoutingModule } from './order-routing.module';
 import { OrdersComponent } from './components/orders/orders.component';
-import { GridModule } from '@progress/kendo-angular-grid';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,7 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     OrderRoutingModule,
-    GridModule,
     AgGridModule,
     HttpClientModule,
     MatCardModule,

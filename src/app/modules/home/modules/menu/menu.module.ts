@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
-import { GridModule } from '@progress/kendo-angular-grid';
-import { CalendarModule } from '@progress/kendo-angular-dateinputs';
 import { AgGridModule } from 'ag-grid-angular';
 import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
 
@@ -16,8 +14,6 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
   imports: [
     CommonModule,
     MenuRoutingModule,
-    GridModule,
-    CalendarModule,
     AgGridModule,
     // MatSlideToggleModule,
     // BrowserAnimationsModule,
