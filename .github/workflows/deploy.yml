@@ -1,1 +1,61 @@
+name: Deploy to cPanel
 
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Build Angular application
+        run: ng build --configuration production
+
+      - name: Verify build directory
+        run: ls -la dist/snowtable_web_1/browser
+
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Deploy to cPanel
+        env:
+          FTP_SERVER_IP: "107.180.118.108"
+          FTP_USERNAME: "dev@snowtable.in"
+          FTP_PASSWORD: "Akhila9012*"
+        run: |
+          set -x
+          echo "FTP Server: $FTP_SERVER_IP"
+          echo "FTP Username: $FTP_USERNAME"
+          echo "FTP Password: $FTP_PASSWORD"
+          lftp -d -e "
+            set ssl:verify-certificate no;
+            set ftp:passive-mode true;
+            set net:timeout 60;
+            set net:max-retries 3;
+            open $FTP_SERVER_IP;
+            user $FTP_USERNAME $FTP_PASSWORD;
+            lcd dist/snowtable_web_1/browser;
+            cd /home/ypsm7zdy2zlg/public_html;
+            mirror -R . .;
+            bye;
+          "
+        shell: bash
