@@ -4,9 +4,10 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { DashboardComponent } from './modules/home/components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: DashboardComponent, loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) }
+  { path: 'home', component: DashboardComponent, loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

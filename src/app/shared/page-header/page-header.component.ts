@@ -21,7 +21,7 @@ export class PageHeaderComponent {
     // Implement logout logic here
     console.log('Logging out...');
     this.showPopup = false; // Close popup after logout action
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);  
   }
 
 
