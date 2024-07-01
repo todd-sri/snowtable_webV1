@@ -1,0 +1,150 @@
+// /* Set the background color of the entire page to black */
+// :host {
+//   display: block;
+//   background-color: #252121; /* Black background */
+//   height: 100vh; /* Full height */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// /* Style the container to have a white background */
+// .container {
+//   background-color: #fff; /* White background */
+//   max-width: 600px;
+//   margin: 0 auto;
+//   padding: 50px;
+//   border-radius: 10px;
+//   box-shadow: red;
+//   width: 50%;
+// }
+
+// .form-group {
+//   margin-bottom: 15px;
+// }
+
+// .form-group label {
+//   display: block;
+//   margin-bottom: 5px;
+//   color: #333; /* Dark text color for labels */
+// }
+
+// .form-control {
+//   width: 100%;
+//   padding: 10px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+// }
+
+// .btn {
+//   display: block;
+//   width: 100%;
+//   padding: 10px;
+//   border: none;
+//   background-color: #252121;
+//   color: #fff;
+//   font-size: 16px;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   text-align: center;
+// }
+
+// .btn:hover {
+//   background-color: #252121;
+// }
+
+// .form-control:focus {
+//   outline: none;
+//   color: black; /* Text color on focus */
+//   border-color: #252121; /* Optional: change border color on focus */
+//   box-shadow: #252121; /* Optional: add a shadow on focus */
+// }
+
+// .register-btn {
+//   display: block;
+//   padding: 10px;
+//   border: none;
+//   background-color: #252121;
+//   color: #fff;
+//   font-size: 16px;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   text-align: center;
+//   float: inline-end;
+// }
+// .logo {
+//   width: 100px;
+//   margin: 0 45% 2% 45%;
+//   padding-top: 5%;
+// }
+// .logo img {
+//   display: block;
+//   margin: 0 auto;
+//   max-width: 100%; /* Ensures the image is responsive */
+// }
+// .wrapper-container {
+//   width: 100%;
+// }
+
+
+
+.wrapper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  /* Additional background styles can be added here */
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px; /* Adjust max-width as needed */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.register-btn {
+  background-color: #252521;
+  color: #c3bebe;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  float: right;
+
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+

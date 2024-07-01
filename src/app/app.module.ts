@@ -17,6 +17,8 @@ import { StatusToggleComponent } from './modules/home/modules/menu/components/st
 import { PageHeaderComponent } from './shared/page-header/page-header.component';
 import { DeleteButtonComponent } from './modules/home/modules/menu/components/delete-button/delete-button.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { SnowtableComponent } from './modules/auth/components/snowtable/snowtable.component';
+// import { RegistrationComponent } from './modules/auth/components/registration/registration.component';
 
 
 
@@ -25,7 +27,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AppComponent,
     LoginComponent,
     StatusToggleComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    SnowtableComponent
   ],
   imports: [
     BrowserModule,

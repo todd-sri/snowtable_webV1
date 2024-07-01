@@ -1,15 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { SocialAuthService, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
-import { Component, OnInit } from '@angular/core';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  selector: 'app-snowtable',
+  templateUrl: './snowtable.component.html',
+  styleUrl: './snowtable.component.scss'
 })
-export class LoginComponent {
+export class SnowtableComponent {
   email = '';
   response: any;
   constructor( private authService:SocialAuthService, private router: Router, private loginService: LoginService) {}
@@ -31,6 +30,9 @@ export class LoginComponent {
       }
       }
     });
+  }
+  login() {
+    this.router.navigate(['/login']);
   }
   createAccount() {
     this.router.navigate(['/register']);
