@@ -17,11 +17,12 @@ body {
     background-color: #252121;
     color: #fff;
     flex: 1.5;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 20px;
+    position: relative;
 }
 
 .logo {
@@ -34,10 +35,34 @@ body {
 .logo img {
     display: block;
     max-height: 120px;
-  }
-.centered-text {
-    text-align: center;
-    font-size: 32px;
+}
+
+.sentence-container {
+    text-align: left;
+    margin-left: 15px;
+    line-height: 1.5;
+}
+
+.sentence {
+    display: inline-block;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.animated-letter {
+    font-size: 25px;
+    display: inline-block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.space {
+    width: 0.5em;
+    display: inline-block;
 }
 
 .right-panel {
@@ -75,35 +100,6 @@ body {
 .btn:hover {
     background-color: #333;
 }
-.animated-letter {
-    font-size: 25px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .animated-letter {
-    display: inline-block;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  
-  .space {
-    width: 0.5em; /* Adjust this to control the width of the space */
-    display: inline-block;
-  }
-  .sentence {
-    margin: 10px;
-    
-  }
-  
-  
-  
-  
-  
-
 
 @media (max-width: 768px) {
     .landing-container {
@@ -115,25 +111,21 @@ body {
         width: 100%;
     }
 
-    .centered-text {
-        font-size: 24px;
-    }
-
     .btn {
         width: 80%;
         font-size: 14px;
     }
-    .sentence {
-        margin: 22px;
+
+    .sentence-container {
+        margin-top: 50px;
+        line-height: 1.2;
     }
-    .logo img {
-        display: block;
-        max-height: 70px;
-      }
-      .logo {
-        left: 10px;
-    }
+
     .animated-letter {
         font-size: 10px;
+    }
+
+    .logo img {
+        max-height: 70px;
     }
 }
