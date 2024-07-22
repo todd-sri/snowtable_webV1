@@ -8,16 +8,13 @@ import { catchError } from 'rxjs/operators';
 })
 export class LoginService {
 
-  private apiUrl = 'http://127.0.0.1:5006/signin' // Replace with your API endpoint
+  private apiUrl = 'http://snowtable.in/loginapi/api' // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 
   // Method to call the API with email as parameter
-  login(email: string): Observable<any> {
- 
-    const x = { email: email };
-
-    return this.http.post<any>(this.apiUrl, x)
+  login(userDetails: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, userDetails)
   }
 
   // Error handling method
