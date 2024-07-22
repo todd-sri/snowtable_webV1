@@ -7,13 +7,15 @@ import { DashboardComponent } from '../home/components/dashboard/dashboard.compo
 import { HomeModule } from '../home/home.module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FormsModule } from '@angular/forms';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     DashboardComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,

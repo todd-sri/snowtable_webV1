@@ -3,11 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from '../home/components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { SnowtableComponent } from './components/snowtable/snowtable.component';
-// import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
   { path: '', component: SnowtableComponent},
-  // { path: 'register', component: RegistrationComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: DashboardComponent, loadChildren: () => import('../home/home.module').then(m => m.HomeModule) },
   { path: '**', redirectTo: '' }

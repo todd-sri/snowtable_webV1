@@ -1,0 +1,61 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Full page layout */
+  .confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #252121; /* Change to your preferred background color */
+    padding: 200px;
+    flex-direction: column;
+    
+    a {
+        color: #fff;
+    }
+  }
+  
+  .header {
+    text-align: center;
+    background-color: #252121; /* Change to your preferred header background color */
+    padding: 20px;
+    border-radius: 8px;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    line-height: 4.2em;
+    font-size: 25px;
+    font-family: system-ui;
+  }
+  
+  .header h1 {
+    color: #fff; /* Change to your preferred text color */
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    color: #fff; /* Change to your preferred text color */
+  }
+  
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .logo img {
+    width: 100px; /* Adjust the size of the logo */
+    height: auto;
+  }
+  
+
+  

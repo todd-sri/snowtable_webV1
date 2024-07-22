@@ -16,7 +16,6 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
-      debugger
       if(user != null) { 
       console.log(user)
       if (user.email) {

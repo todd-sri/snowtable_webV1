@@ -7,7 +7,7 @@ import { Restaurant } from '../models/Registration';
   providedIn: 'root'
 })
 export class RegistrationService {
-  private apiUrl = 'https://localhost:7180/api/Restaurant'; // Replace with your actual API endpoint
+  private apiUrl = 'https://snowtable.in/signupapi/api/users'; // Replace with your actual API endpoint
 
   constructor(private http: HttpClient) { }
 
