@@ -2,9 +2,9 @@
     <div class="login-container">
         <div class="login-card">
             <img src="/assets/snowtableratri.png" alt="Logo" class="logo">
-            <input type="email" placeholder="Email" class="input-field">
-            <input type="password" placeholder="Password" class="input-field">
-            <button class="continue-button">Continue</button>
+            <input type="email" placeholder="Email" class="input-field" [(ngModel)]="email" required> 
+            <input type="password" placeholder="Password" class="input-field" [(ngModel)]="password" required>
+            <button class="continue-button" (click)="login()">Continue</button>
             <hr class="divider">
             <p>Or continue with</p>
             <div class="google-login">

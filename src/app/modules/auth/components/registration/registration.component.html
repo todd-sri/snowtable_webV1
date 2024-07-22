@@ -38,11 +38,11 @@
       <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
         <div class="form-group">
           <label for="restaurantName">Restaurant Name</label>
-          <input type="text" class="form-control" id="restaurantName" required [(ngModel)]="restaurant.restaurant_name" name="restaurantName">
+          <input type="text" class="form-control" id="restaurantName" required [(ngModel)]="restaurant.res_name" name="restaurantName">
         </div>
         <div class="form-group">
           <label for="ownerName">Owner Name</label>
-          <input type="text" class="form-control" id="ownerName" required [(ngModel)]="restaurant.owner_Name" name="ownerName">
+          <input type="text" class="form-control" id="ownerName" required [(ngModel)]="restaurant.owner_name" name="ownerName">
         </div>
         <div class="form-group">
           <label for="phone">Phone</label>

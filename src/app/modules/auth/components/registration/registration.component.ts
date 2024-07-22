@@ -14,18 +14,18 @@ import { RegistrationService } from '../../services/registration.service';
 })
 export class RegistrationComponent {
   restaurant: Restaurant = {
-    restaurant_name: '',
-    owner_Name: '',
+    res_name: '',
+    owner_name: '',
     phone: '',
     email: '',
-    restaurant_unique_id: '',
+    res_uuid: '',
     password: ''
   };
 
   constructor(private http: HttpClient, private router: Router, private register : RegistrationService) { }
 
   onSubmit() {
-    if (this.restaurant.restaurant_name && this.restaurant.owner_Name && this.restaurant.phone) {
+    if (this.restaurant.res_name && this.restaurant.owner_name && this.restaurant.phone) {
       this.saveRestaurant();
     } else {
    
@@ -35,6 +35,7 @@ export class RegistrationComponent {
     this.register.saveRestaurantDetails(this.restaurant)
       .subscribe({
         next: response => {
+          debugger
           this.router.navigate(['/confirm']);
           console.log('Restaurant saved', response);
         },

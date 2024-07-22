@@ -10,13 +10,14 @@ import { LoginService } from '../../services/login.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email = '';
+  email: string ='';
+  password: string='';
+
   response: any;
   constructor( private authService:SocialAuthService, private router: Router, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
-      debugger
       if(user != null) { 
       console.log(user)
       if (user.email) {
@@ -25,7 +26,7 @@ export class LoginComponent {
             this.router.navigate(['/home']);
           }
           else{
-            alert("please sign up")
+            this.router.navigate(['/confirm']);
           }
         })
       }
@@ -35,4 +36,22 @@ export class LoginComponent {
   createAccount() {
     this.router.navigate(['/register']);
   }
+  login(){ 
+      const userDetails = {
+        email: this.email,
+        password: this.password
+      }
+      if (this.email && this.password) {
+        this.loginService.login(userDetails).subscribe((data:any) =>{
+          if(data.status){
+            this.router.navigate(['/home']);
+          }
+          else{
+            this.router.navigate(['/confirm']);
+          }
+        })
+      } else {
+
+      }
+      }
 }
