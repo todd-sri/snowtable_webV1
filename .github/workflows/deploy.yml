@@ -40,7 +40,7 @@ jobs:
         env:
           FTP_SERVER_IP: "107.180.118.108"
           FTP_USERNAME: "dev@snowtable.in"
-          FTP_PASSWORD: "Akhila9012*"
+          FTP_PASSWORD: "U-R@ErK-+{B3"
         run: |
           set -x
           echo "FTP Server: $FTP_SERVER_IP"
