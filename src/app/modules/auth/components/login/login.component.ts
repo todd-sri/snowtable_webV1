@@ -44,6 +44,7 @@ export class LoginComponent {
       if (this.email && this.password) {
         this.loginService.login(userDetails).subscribe((data:any) =>{
           if(data.status){
+            localStorage.setItem('res_uuid', data.res_uuid);
             this.router.navigate(['/home']);
           }
           else{

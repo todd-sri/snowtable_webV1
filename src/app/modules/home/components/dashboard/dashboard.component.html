@@ -1,16 +1,13 @@
-
-  <div class="dashboard-container">
-    <app-sidebar [menuList]="menuList"></app-sidebar>
-    <div class="main-area">
-      <div class="header-container">
-        <app-page-header></app-page-header>
-      </div>
-      <div class="main-content">
-        <div class="dashboard-content">
-          <router-outlet></router-outlet>
-        </div>
+<div class="dashboard-container">
+  <app-sidebar [menuList]="menuList" (routeNavigation)="selectMenu($event)"></app-sidebar>
+  <div class="main-area">
+    <div class="header-container">
+      <app-page-header></app-page-header>
+    </div>
+    <div class="main-content">
+      <div class="dashboard-content">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
-
-  
+</div>
