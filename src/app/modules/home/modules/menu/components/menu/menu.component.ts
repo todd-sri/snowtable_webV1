@@ -4,6 +4,7 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { StatusToggleComponent } from '../status-toggle/status-toggle.component';
 import { MenuService } from '../../services/menu.service';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
+import { LoginService } from '../../../../../auth/services/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -15,10 +16,11 @@ export class MenuComponent implements OnInit {
 
   // public menuItems: Array<{ Item_Name: string, Category: string, Half_Price: number, Half_Price: number, Veg_Non_veg: string}> = [];
   columnDefs: ColDef[] = [
-    { field: 'Item_Name', headerName: 'Item Name', sortable: true, filter: true,editable: true },
-    { field: 'Category', headerName: 'Category', sortable: true, filter: true,editable: true },
-    // { field: 'Half_Price', headerName: 'Half Price', sortable: true, filter: true,editable: true },
-     { field: 'Half_Price', headerName: 'Full Price', sortable: true, filter: true, editable: true },
+    { field: 'item_name', headerName: 'Item Name', sortable: true, filter: true,editable: true },
+    { field: 'category_name', headerName: 'Category', sortable: true, filter: true,editable: true },
+    // { field: 'half_price', headerName: 'Half Price', sortable: true, filter: true,editable: true },
+     { field: 'price', headerName: 'Price', sortable: true, filter: true, editable: true },
+     { field: 'description', headerName: 'Description', sortable: true, filter: true, editable: true },
     { field: 'status', headerName: 'Status', cellRenderer: StatusToggleComponent, editable: false, filter: false},
     { field: 'delete', headerName: '', cellRenderer: DeleteButtonComponent,
       cellRendererParams: {
@@ -59,8 +61,9 @@ export class MenuComponent implements OnInit {
     paginationPageSize: 20
   };
   rowData = [];
+  userData: any;
 
-  constructor(private menuService: MenuService) {
+  constructor(private menuService: MenuService, private loginService: LoginService) {
     
     
   }
@@ -68,15 +71,13 @@ export class MenuComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.userData = this.loginService.getUserData();
     this.loadMenuItems();
   }
 
-
-  // toggleStatus(rowIndex: number) {
-  //   this.rowData[rowIndex].status = !this.rowData[rowIndex].status;
-  // }
   loadMenuItems() {
-    this.menuService.getMenuItems().subscribe((data : any) => {
+    
+    this.menuService.getMenuItems(this.userData).subscribe((data : any) => {
       debugger
       this.rowData = data;
     })

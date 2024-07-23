@@ -8,7 +8,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class LoginService {
 
-  private apiUrl = 'http://snowtable.in/loginapi/api' // Replace with your API endpoint
+  private userData: any;
+  private apiUrl = 'https://snowtable.in/loginapi/api' // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +17,15 @@ export class LoginService {
   login(userDetails: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, userDetails)
   }
+
+  setUserData(data: any): void {
+    this.userData = data;
+  }
+
+  getUserData(): any {
+    return this.userData;
+  }
+
 
   // Error handling method
   private handleError<T>(operation = 'operation', result?: T) {

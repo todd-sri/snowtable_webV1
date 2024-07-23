@@ -7,20 +7,25 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-@Input() menuList:any;
-@Output() routeNavigation = new EventEmitter<string>();
-  constructor(private router: Router) {
-    
-  }
+  @Input() menuList: any;
+  @Output() routeNavigation = new EventEmitter<string>();
 
-  handleButtonClick(item: any) {
+  constructor(private router: Router) {}
 
-  }
-
-  navigateTo(route: string) {
-    this.router.navigate([route]);
-  }
   navigateaRoute(event: any) {
     this.routeNavigation.emit();
+  }
+
+  getMenuIcon(menuName: string): string {
+    switch(menuName) {
+      case 'ORDERS':
+        return 'fa fa-shopping-cart';
+      case 'MENU':
+        return 'fa fa-list';
+      case 'SALES':
+        return 'fa fa-chart-line';
+      default:
+        return '';
+    }
   }
 }
