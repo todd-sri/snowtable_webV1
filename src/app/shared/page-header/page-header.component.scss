@@ -26,11 +26,12 @@
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
+    border: 1px solid #dad4d4;
   }
   
   .profile-picture {
     width: 100%;
-    height: 100%;
+    height: 108%;
     object-fit: cover;
   }
   

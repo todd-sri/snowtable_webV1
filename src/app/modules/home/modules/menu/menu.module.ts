@@ -5,11 +5,13 @@ import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
+import { SnowCrystalLoaderComponent } from '../../../../shared/snow-crystal-loader/snow-crystal-loader.component';
 
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    SnowCrystalLoaderComponent
   ],
   imports: [
     CommonModule,

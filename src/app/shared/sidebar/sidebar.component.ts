@@ -19,7 +19,7 @@ export class SidebarComponent {
   getMenuIcon(menuName: string): string {
     switch(menuName) {
       case 'ORDERS':
-        return 'fa fa-shopping-cart';
+        return 'fa fa-pen-to-square'; 
       case 'MENU':
         return 'fa fa-list';
       case 'SALES':
