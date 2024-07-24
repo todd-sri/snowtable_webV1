@@ -46,21 +46,21 @@ button {
   box-shadow: 0 0 5px #252521; /* Add a focus shadow */
 }
 
-.save-button {
-  background-color: #252521;/* Bootstrap Primary Color */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px 0;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  float: right;
-}
+// .save-button {
+//   background-color: #252521;/* Bootstrap Primary Color */
+//   border: none;
+//   color: white;
+//   padding: 10px 20px;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 16px;
+//   margin: 10px 0;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   transition: background-color 0.3s ease, transform 0.2s ease;
+//   float: right;
+// }
 
 .save-button:hover {
   background-color: #252521; /* Darker shade for hover effect */
@@ -77,3 +77,32 @@ button {
 }
 
 
+.save-button {
+  background-color: #252521;/* Bootstrap Primary Color */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  float: right;
+
+  &.saved {
+    background-color: green;
+    cursor: not-allowed;
+  }
+
+  &.enabled {
+    background-color: #252521;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

@@ -7,6 +7,8 @@ import { Observable, of } from 'rxjs';
 })
 export class MenuService {
   private apiUrl = 'https://snowtable.in/menuapis/res_menuapi'; // Replace with your actual API endpoint
+  private saveAPi = 'https://snowtable.in/menuapis/res_updatemenuapi'
+  
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +21,11 @@ export class MenuService {
       return of([]);
     }
   
+    
+  }
+  
+  saveMenuItems(items: any) {
+    return this.http.post(`${this.saveAPi}`, items);
   }
   
 }

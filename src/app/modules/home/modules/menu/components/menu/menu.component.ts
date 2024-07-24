@@ -14,11 +14,10 @@ import { LoginService } from '../../../../../auth/services/login.service';
 export class MenuComponent implements OnInit {
   private gridApi!: GridApi;
 
-  // public menuItems: Array<{ Item_Name: string, Category: string, Half_Price: number, Half_Price: number, Veg_Non_veg: string}> = [];
   columnDefs: ColDef[] = [
     { field: 'item_name', headerName: 'Item Name', sortable: true, filter: true,editable: true },
     { field: 'category_name', headerName: 'Category', sortable: true, filter: true,editable: true },
-    // { field: 'half_price', headerName: 'Half Price', sortable: true, filter: true,editable: true },
+    { field: 'veg_non_veg', headerName: 'Veg / NonVeg', sortable: true, filter: true,editable: true },
      { field: 'price', headerName: 'Price', sortable: true, filter: true, editable: true },
      { field: 'description', headerName: 'Description', sortable: true, filter: true, editable: true },
     { field: 'status', headerName: 'Status', cellRenderer: StatusToggleComponent, editable: false, filter: false},
@@ -35,17 +34,8 @@ export class MenuComponent implements OnInit {
     statusToggle: StatusToggleComponent,
     deleteButton: DeleteButtonComponent
   };
-  // public defaultColDef: ColDef = {
-  //   editable: true,
-  //   enableRowGroup: true,
-  //   enablePivot: true,
-  //   enableValue: true,
-  //   filter: true,
-  //   flex: 1,
-  //   minWidth: 100,
-  // };
   public defaultColDef: ColDef = {
-    editable: false, // Set default to non-editable
+    editable: false,
     enableRowGroup: true,
     enablePivot: true,
     enableValue: true,
@@ -53,7 +43,7 @@ export class MenuComponent implements OnInit {
     flex: 1,
     minWidth: 100,
   };
-  
+
   paginationPageSize = 20;
  
   gridOptions = {
@@ -62,66 +52,100 @@ export class MenuComponent implements OnInit {
   };
   rowData = [];
   userData: any;
+  loading = true;
+  // New lists to track changes
+  editedItems: any[] = [];
+  newItems: any[] = [];
+  isSaved = false;
+  isUpdated = false;
+
 
   constructor(private menuService: MenuService, private loginService: LoginService) {
-    
-    
   }
 
-
-
   ngOnInit(): void {
+    this.newItems = [];
     this.userData = this.loginService.getUserData();
     this.loadMenuItems();
   }
 
   loadMenuItems() {
-    
     this.menuService.getMenuItems(this.userData).subscribe((data : any) => {
       debugger
+      this.loading = false;
       this.rowData = data;
-    })
+    });
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
-    var x = this.rowData;
   }
 
   // Add a new row
   addRow() {
-    const newItem = { itemName: '', category: '', halfPrice: 0, fullPrice: 0, status: false };
+    const newItem = { item_name: '', category_name: '', price: 0, description: '', status: false, half_price: ''};
+    this.newItems.push(newItem);  // Track new item
     this.gridApi.applyTransaction({ add: [newItem] });
   }
 
   // Update an existing row
   updateRow() {
-    const rowNode = this.gridApi.getRowNode('0'); // Assuming we're updating the first row
+    const rowNode = this.gridApi.getRowNode('0'); 
     if (rowNode) {
       rowNode.setData({ ...rowNode.data, name: 'Updated Item' });
+      this.editedItems.push(rowNode.data);  
     }
   }
 
-  // Remove an existing row
-  removeRow() {
-    const selectedNodes = this.gridApi.getSelectedNodes();
-    this.gridApi.applyTransaction({ remove: selectedNodes.map(node => node.data) });
+  // Capture edited cell values
+  onCellValueChanged(event: any) {
+    this.isUpdated = true;
+    this.isSaved = false;
+    event.data.res_uuid = localStorage.getItem('res_uuid');
+    const editedItem = event.data;
+    // Add to editedItems if not already present
+    if (!this.editedItems.some(item => item === editedItem)) {
+      this.editedItems.push(editedItem);
+    }
   }
 
-  onCellValueChanged(value: any) {
-    debugger
-
-  }
+  // Save changes to the server
   save() {
-    
+    this.loading = true;
+    this.isSaved = true;
+    this.isUpdated = false;
+    const itemsToSave = [...this.editedItems];
+    itemsToSave.forEach(i => {
+      i.half_price = i.price/2;
+    });
+    const items = {
+      res_uuid: localStorage.getItem('res_uuid'),
+      items: itemsToSave
+    }
+    // Call your API service to save the items
+    this.menuService.saveMenuItems(items).subscribe(response => {
+      this.loading = false;
+      console.log('Save successful', response);
+      // Clear the tracking lists after save
+      this.editedItems = [];
+      this.newItems = [];
+    }, error => {
+      console.error('Save failed', error);
+      this.isSaved = false;
+    });
   }
+
   onDeleteRow(rowData: any) {
     // Remove the row from rowData
     this.rowData = this.rowData.filter(row => row !== rowData);
     // Optionally: Trigger change detection or grid refresh if necessary
   }
 
+  get buttonText() {
+    return this.isSaved ? 'Saved' : 'Save';
+  }
 
 }
+
 
 
