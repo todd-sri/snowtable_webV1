@@ -32,7 +32,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
     //   this.orders = orders.filter(order => order.status === 'active');
     // });
   this.orderService.getOrders().subscribe(orders => {
-      this.orders = orders.filter(order => order.status === 'active');
+    debugger
+      this.orders = orders.filter(order => order.status === 'received');
     });
   }
 

@@ -1,90 +1,4 @@
-// /* Set the background color of the entire page to black */
-// :host {
-//   display: block;
-//   background-color: #252121; /* Black background */
-//   height: 100vh; /* Full height */
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
 
-// /* Style the container to have a white background */
-// .container {
-//   background-color: #fff; /* White background */
-//   max-width: 600px;
-//   margin: 0 auto;
-//   padding: 50px;
-//   border-radius: 10px;
-//   box-shadow: red;
-//   width: 50%;
-// }
-
-// .form-group {
-//   margin-bottom: 15px;
-// }
-
-// .form-group label {
-//   display: block;
-//   margin-bottom: 5px;
-//   color: #333; /* Dark text color for labels */
-// }
-
-// .form-control {
-//   width: 100%;
-//   padding: 10px;
-//   border: 1px solid #ccc;
-//   border-radius: 5px;
-// }
-
-// .btn {
-//   display: block;
-//   width: 100%;
-//   padding: 10px;
-//   border: none;
-//   background-color: #252121;
-//   color: #fff;
-//   font-size: 16px;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   text-align: center;
-// }
-
-// .btn:hover {
-//   background-color: #252121;
-// }
-
-// .form-control:focus {
-//   outline: none;
-//   color: black; /* Text color on focus */
-//   border-color: #252121; /* Optional: change border color on focus */
-//   box-shadow: #252121; /* Optional: add a shadow on focus */
-// }
-
-// .register-btn {
-//   display: block;
-//   padding: 10px;
-//   border: none;
-//   background-color: #252121;
-//   color: #fff;
-//   font-size: 16px;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   text-align: center;
-//   float: inline-end;
-// }
-// .logo {
-//   width: 100px;
-//   margin: 0 45% 2% 45%;
-//   padding-top: 5%;
-// }
-// .logo img {
-//   display: block;
-//   margin: 0 auto;
-//   max-width: 100%; /* Ensures the image is responsive */
-// }
-// .wrapper-container {
-//   width: 100%;
-// }
 
 
 
@@ -128,6 +42,7 @@ label {
   border: none;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .register-btn {
@@ -149,4 +64,47 @@ label {
     max-width: 90%;
   }
 }
+
+
+
+input:focus {
+  outline: none;
+  border: 2px solid #252121; /* Change the border color */
+  box-shadow: 0 0 5px #252121 /* Add a shadow */
+}
+
+
+.validation-message {
+  color: red;
+  font-size: 12px;
+}
+
+
+.progress-bar-container {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 1px;
+  animation: progress-animation 2s infinite;
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+
 

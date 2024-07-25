@@ -20,7 +20,17 @@ export class MenuComponent implements OnInit {
     { field: 'veg_non_veg', headerName: 'Veg / NonVeg', sortable: true, filter: true,editable: true },
      { field: 'price', headerName: 'Price', sortable: true, filter: true, editable: true },
      { field: 'description', headerName: 'Description', sortable: true, filter: true, editable: true },
-    { field: 'status', headerName: 'Status', cellRenderer: StatusToggleComponent, editable: false, filter: false},
+     {
+      field: 'status',
+      headerName: 'Status',
+      cellRenderer: StatusToggleComponent,
+      editable: false,
+      filter: false,
+      cellRendererParams: {
+        statusChange: this.onStatusChange.bind(this) // Ensure binding to `this`
+      }
+    },
+  
     { field: 'delete', headerName: '', cellRenderer: DeleteButtonComponent,
       cellRendererParams: {
         onDelete: this.onDeleteRow.bind(this)
@@ -58,6 +68,7 @@ export class MenuComponent implements OnInit {
   newItems: any[] = [];
   isSaved = false;
   isUpdated = false;
+  newItem= [];
 
 
   constructor(private menuService: MenuService, private loginService: LoginService) {
@@ -85,8 +96,10 @@ export class MenuComponent implements OnInit {
   addRow() {
     const newItem = { item_name: '', category_name: '', price: 0, description: '', status: false, half_price: ''};
     this.newItems.push(newItem);  // Track new item
-    this.gridApi.applyTransaction({ add: [newItem] });
+    this.gridApi.applyTransaction({ add: [newItem], addIndex: 0 });  
   }
+
+  
 
   // Update an existing row
   updateRow() {
@@ -144,6 +157,17 @@ export class MenuComponent implements OnInit {
   get buttonText() {
     return this.isSaved ? 'Saved' : 'Save';
   }
+
+  onStatusChange(rowData: any) {
+    debugger
+    this.isUpdated = true;
+    this.isSaved = false;
+    rowData.res_uuid = localStorage.getItem('res_uuid');
+    if (!this.editedItems.some(item => item === rowData)) {
+      this.editedItems.push(rowData);
+    }
+  }
+
 
 }
 

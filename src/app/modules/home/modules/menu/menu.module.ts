@@ -11,7 +11,7 @@ import { SnowCrystalLoaderComponent } from '../../../../shared/snow-crystal-load
 @NgModule({
   declarations: [
     MenuComponent,
-    SnowCrystalLoaderComponent
+    // SnowCrystalLoaderComponent
   ],
   imports: [
     CommonModule,

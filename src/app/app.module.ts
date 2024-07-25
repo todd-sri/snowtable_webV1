@@ -31,7 +31,8 @@ import { SnowCrystalLoaderComponent } from './shared/snow-crystal-loader/snow-cr
     StatusToggleComponent,
     DeleteButtonComponent,
     SnowtableComponent,
-    SnowtableV1Component
+    SnowtableV1Component,
+    SnowCrystalLoaderComponent
   ],
   imports: [
     BrowserModule,

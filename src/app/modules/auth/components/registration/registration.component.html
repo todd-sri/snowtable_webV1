@@ -1,60 +1,23 @@
-<!-- <div class="wrapper-container"> -->
-<!-- <div class="logo">
-  <img src="assets/snowtableratri.png" alt="Snowtable Logo">
-</div> -->
-<!-- <div class="container">
-    <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
-      <div class="form-group restaurant">
-        <label for="restaurantName">Restaurant Name</label>
-        <input type="text" class="form-control" id="restaurantName" required [(ngModel)]="restaurant.restaurant_name" name="restaurantName">
-      </div>
-      <div class="form-group">
-        <label for="ownerName">Owner Name</label>
-        <input type="text" class="form-control" id="ownerName" required [(ngModel)]="restaurant.owner_Name" name="ownerName">
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="tel" class="form-control" id="phone" required [(ngModel)]="restaurant.phone" name="phone">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" required [(ngModel)]="restaurant.email" name="email">
-      </div>
-      <button type="submit" class="register-btn">Register</button>
-    </form>
-  </div>
-</div> -->
+<!-- 
 
-<!-- <div class="wrapper-container" style="background-image: url('assets/bgimage.jpg');"> -->
+
   <div class="wrapper-container">
   <div class="card">
-    <!-- Logo -->
-    <!-- Uncomment if you want to add a logo -->
-    <!-- <div class="logo">
-      <img src="assets/snowtableratri.png" alt="Snowtable Logo">
-    </div> -->
-
-    <!-- Registration Form -->
     <div class="container">
       <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
         <div class="form-group">
-          <!-- <label for="restaurantName">Restaurant Name</label> -->
           <input placeholder="Restaurant Name" type="text" class="form-control" id="restaurantName" required [(ngModel)]="restaurant.res_name" name="restaurantName">
         </div>
         <div class="form-group">
-          <!-- <label for="ownerName">Owner Name</label> -->
           <input type="text" placeholder="Owner Name" class="form-control" id="ownerName" required [(ngModel)]="restaurant.owner_name" name="ownerName">
         </div>
         <div class="form-group">
-          <!-- <label for="phone">Phone</label> -->
           <input type="tel" placeholder="Phone" class="form-control" id="phone" required [(ngModel)]="restaurant.phone" name="phone">
         </div>
         <div class="form-group">
-          <!-- <label for="email">Email</label> -->
           <input type="email" placeholder="Email" class="form-control" id="email" required [(ngModel)]="restaurant.email" name="email">
         </div>
         <div class="form-group">
-          <!-- <label for="password">Password</label> -->
           <input type="password" placeholder="Password" class="form-control" id="password" required [(ngModel)]="restaurant.password" name="password">
         </div>
         <button type="submit" class="register-btn">Register</button>
@@ -62,5 +25,50 @@
     </div>
   </div>
 </div>
+   -->
 
+   <div class="wrapper-container">
+    <div class="card">
+      <div class="container">
+        <form (ngSubmit)="onSubmit(registrationForm)" #registrationForm="ngForm" (keydown.enter)="onSubmit(registrationForm)">
+          <div class="form-group">
+            <input placeholder="Restaurant Name" type="text" class="form-control" id="restaurantName" required [(ngModel)]="restaurant.res_name" name="restaurantName" #resName="ngModel">
+            <div *ngIf="resName.invalid && resName.touched" class="validation-message">
+              Restaurant Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Owner Name" class="form-control" id="ownerName" required [(ngModel)]="restaurant.owner_name" name="ownerName" #ownerName="ngModel">
+            <div *ngIf="ownerName.invalid && ownerName.touched" class="validation-message">
+              Owner Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Phone" class="form-control" id="phone" required [(ngModel)]="restaurant.phone" name="phone" #phone="ngModel">
+            <div *ngIf="phone.invalid && phone.touched" class="validation-message">
+              Phone is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email" class="form-control" id="email" required [(ngModel)]="restaurant.email" name="email" #email="ngModel" [pattern]="emailPattern">
+            <div *ngIf="email.invalid && email.touched" class="validation-message">
+              <div *ngIf="email.errors?.['required']">Email is required.</div>
+              <div *ngIf="email.errors?.['pattern']">Invalid email format.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Password" class="form-control" id="password" required [(ngModel)]="restaurant.password" name="password" #password="ngModel" [pattern]="passwordPattern">
+            <div *ngIf="password.invalid && password.touched" class="validation-message">
+              <div *ngIf="password.errors?.['required']">Password is required.</div>
+              <div *ngIf="password.errors?.['pattern']">Password must be at least 8 characters long, contain at least one letter and one number.</div>
+            </div>
+          </div>
+          <div *ngIf="loading" class="progress-bar-container">
+            <div class="progress-bar"></div>
+          </div>
+          <button type="submit" class="register-btn">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
   

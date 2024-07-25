@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 @Component({
@@ -9,6 +9,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 export class StatusToggleComponent implements ICellRendererAngularComp {
   params: any;
+  @Output() statusChange = new EventEmitter<any>();
 
   // Initialize the cell renderer with parameters
   agInit(params: any): void {
@@ -23,7 +24,15 @@ export class StatusToggleComponent implements ICellRendererAngularComp {
 
   // Handle the toggle switch change event
   onToggleChange(event: any) {
+    debugger
     const checked = event.target.checked;
-    this.params.value = checked; // Update the cell'
+    this.params.data.status = !checked? 0 : 1; // Update the cell'
+    // this.statusChange.emit({
+    //   rowData: this.params.data,
+    //   newValue: checked
+    // });
+    if (this.params.statusChange) {
+      this.params.statusChange(this.params.data); // Call the callback function
+    }
   }
 }

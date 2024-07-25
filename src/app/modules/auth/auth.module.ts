@@ -15,7 +15,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     LoginComponent,
     DashboardComponent,
     RegistrationComponent,
-    ConfirmationComponent
+    ConfirmationComponent  
   ],
   imports: [
     CommonModule,
