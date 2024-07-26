@@ -1,44 +1,25 @@
-<div class="orders-container">
-  <div *ngFor="let order of paginatedOrders" class="order-card">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Table {{ order.tableNumber }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li *ngFor="let item of order.items">
-            {{ item.item }} x {{ item.quantity }}
-          </li>
-        </ul>
-      </mat-card-content>
-      <!-- <mat-card-footer>
-        <p>{{ order.customerName }} - {{ order.customerPhone }}</p> -->
-        <!-- <button mat-button 
-        [ngClass]="{'active-btn': order.status === 'active', 'inactive-btn': order.status === 'inactive'}" 
-        (click)="updateOrderStatus(order)">
-  Mark order served  <mat-icon>check_circle</mat-icon>
-</button> -->
 
-
-
-      <!-- </mat-card-footer> -->
-      <mat-card-footer>
-        <p>{{ order.customerName }} - {{ order.customerPhone }}</p>
-        <button mat-button 
-                [ngClass]="{'active-btn': order.status === 'active', 'inactive-btn': order.status === 'inactive'}" 
-                (click)="updateOrderStatus(order)">
-          Mark order served 
-          <span *ngIf="order.status === 'active'">
-            <mat-icon>check_circle</mat-icon>
-          </span>
-        </button>
-      </mat-card-footer>
-      
-    </mat-card>
-  </div>
-
-  <div class="pagination-controls">
-    <button mat-button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-    <button mat-button (click)="nextPage()" [disabled]="currentPage * ordersPerPage >= orders.length">Next</button>
+<div class="card-container">
+  <div *ngFor="let card of orders" class="card">
+    <div class="card-header">
+      <div class="card-id">{{ card.tableNumber }}</div>
+      <div class="card-meta">{{ card.id }}</div>
+      <!-- <div class="card-count">{{ card.count }}</div> -->
+    </div>
+    <div class="card-body">
+      <div *ngFor="let item of card.items" class="item">
+        <div class="item-name">
+          <!-- <span class="item-icon">&#x2713;</span> -->
+          <span>{{ item.item }}</span>
+          <span class="item-quantity">{{ item.quantity }}</span>
+        </div>
+        <!-- <div class="item-details">
+          <p>{{ item.details }}</p>
+        </div> -->
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="filter-button">Mark as served</button>
+    </div>
   </div>
 </div>

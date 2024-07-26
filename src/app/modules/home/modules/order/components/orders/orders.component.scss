@@ -1,67 +1,100 @@
-.orders-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  .order-card {
-    flex: 1 1 calc(33.333% - 16px);
-    box-sizing: border-box;
-    line-height: 1.8rem;
-  }
-  
-  .pagination-controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-  }
-  
-  .active-btn {
-    background-color: green;
-    color: white;
-  }
-  
-  .inactive-btn {
-    background-color: red;
-    color: white;
-  }
-  
-  .mat-mdc-card-header {
-    background-color: orange;
-  }
 
-.mat-mdc-card-title {
-    font-size: 29px;
-    font-family: serif;
-    font-weight: bold;
-    padding-bottom: 12px;
-  }
-
-  /* Apply this to all <mat-card-content> elements */
-mat-card-content {
-  height: 125px; /* Set the height as needed */
-  overflow-y: auto; /* Scroll vertically if content overflows */
-  overflow-x: hidden; /* Prevent horizontal overflow */
-}
-
-/* Optional: Add padding or margin if needed */
-mat-card-content ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-mat-card-footer {
-  padding: 20px 20px;
+.card-container {
+  font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: inherit;
+  flex-wrap: wrap;
 }
 
-mat-icon {
-  vertical-align: middle; /* Align the icon vertically with the text */
-  margin-left: 4px; /* Adjust margin as needed to separate icon from text */
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 340px;
+  padding: 20px;
+  margin: 10px;
 }
-.active-btn {
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.card-body {
+  padding: 10px 0;
+}
+
+.card-id {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.card-meta, .card-count {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.item {
+  border-bottom: 1px dashed #eee;
+  padding: 10px 0;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item-name {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+.item-icon {
+  margin-right: 8px;
+  color: red;
+}
+
+.item-quantity {
+  margin-left: 10px; /* Adjust this value as needed for spacing */
+  color: #666;
+}
+
+.item-details p {
+  margin: 2px 0;
+}
+
+.filter-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.search-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.filter-button{
   background-color: #252121;
-  color: #fff !important;
+  color: white;
+  width: 170px;
+  padding: 16px;
+  border-radius: 35px;
+  font-weight: bold;
+  font-family: system-ui;
+
 }
+
