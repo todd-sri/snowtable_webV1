@@ -1,4 +1,3 @@
-
 .card-container {
   font-family: Arial, sans-serif;
   display: flex;
@@ -13,6 +12,10 @@
   width: 340px;
   padding: 20px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  /* Ensure card stretches to fit content */
+  height: auto;
 }
 
 .card-header {
@@ -20,15 +23,15 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.card-header {
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
 
 .card-body {
   padding: 10px 0;
+  overflow-y: auto; /* Enable scrolling */
+  flex: 1; /* Allow body to grow and push footer down */
+  max-height: 200px; /* Adjust height as needed */
 }
 
 .card-id {
@@ -36,7 +39,7 @@
   font-weight: bold;
 }
 
-.card-meta, .card-count {
+.card-meta {
   font-size: 0.9em;
   color: #666;
 }
@@ -63,8 +66,8 @@
 }
 
 .item-quantity {
-  margin-left: 10px; /* Adjust this value as needed for spacing */
   color: #666;
+  margin-right: 25px;
 }
 
 .item-details p {
@@ -72,22 +75,6 @@
 }
 
 .filter-button {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.search-input {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px;
-  flex: 1;
-  margin-left: 10px;
-}
-
-.filter-button{
   background-color: #252121;
   color: white;
   width: 170px;
@@ -95,6 +82,8 @@
   border-radius: 35px;
   font-weight: bold;
   font-family: system-ui;
-
+  cursor: pointer;
+  /* Make sure the button sticks to the bottom */
+  align-self: flex-start; 
 }
 
