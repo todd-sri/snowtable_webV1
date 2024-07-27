@@ -22,6 +22,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   currentPage: number = 1;
   ordersPerPage: number = 5;
   private subscription: Subscription | null = null;
+  realList: any[] = [];
 
   constructor(private orderService: OrderService) {}
 
@@ -33,8 +34,10 @@ export class OrdersComponent implements OnInit, OnDestroy {
     // });
   this.orderService.getOrders().subscribe(orders => {
     debugger
-      this.orders = orders.filter(order => order.status === 'received');
+      this.orders = orders
+      this.realList = [...orders]
     });
+    
   }
 
   ngOnDestroy() {
@@ -61,10 +64,19 @@ export class OrdersComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateOrderStatus(order: Order) {
-    this.orderService.updateOrderStatus(order.id, 'inactive').subscribe(() => {
-      order.status = 'inactive';
-      this.orders = this.orders.filter(o => o.id !== order.id);
+  updateOrderStatus(order: any) {
+    debugger
+    this.orderService.updateOrderStatus(order.id, 'inactive').subscribe((response) => {
+      if(response.message === "Order status updated successfully") {
+        const res = this.orders.filter(o => o.id === order.id);
+        res[0].status = "served";
+      }
     });
+  }
+  served() {
+   this.orders = this.realList.filter(x=>x.status === "served");
+  }
+  received() {
+    this.orders = this.realList.filter(x=>x.status === "received");
   }
 }

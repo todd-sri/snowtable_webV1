@@ -17,6 +17,7 @@ interface Order {
 })
 export class OrderService {
   private apiUrl = 'https://snowtable.in/ordersgetapi/orddetails'; // Replace with your API URL
+  private orderStatusUrl = 'https://snowtable.in/orderstatusapi/orderstatusapi?res_uuid=RT002';
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +31,14 @@ export class OrderService {
     }
   }
 
-  updateOrderStatus(orderId: number, status: string): Observable<any> {
-    return this.http.patch(`${this.apiUrl}/${orderId}`, { status });
+  updateOrderStatus(order_id: number, status: string): Observable<any> {
+    const resUuid = localStorage.getItem('res_uuid');
+    if (resUuid) {
+      const params = new HttpParams().set('res_uuid', resUuid);
+      return this.http.post(`${this.orderStatusUrl}`, { order_id });
+    } else {
+      return of([]);
+    }
+  
   }
 }

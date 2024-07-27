@@ -2,6 +2,26 @@
   font-family: Arial, sans-serif;
   display: flex;
   flex-wrap: wrap;
+  position: relative; /* Added to position the button container */
+}
+
+.button-container {
+  position: absolute;
+  top: -46px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  right: 94px;
+}
+
+.status-button {
+  background-color: #252121;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .card {
@@ -9,7 +29,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 340px;
+  width: 240px;
   padding: 20px;
   margin: 10px;
   display: flex;
@@ -31,7 +51,7 @@
   padding: 10px 0;
   overflow-y: auto; /* Enable scrolling */
   flex: 1; /* Allow body to grow and push footer down */
-  max-height: 200px; /* Adjust height as needed */
+  max-height: 178px; /* Adjust height as needed */
 }
 
 .card-id {
@@ -77,13 +97,20 @@
 .filter-button {
   background-color: #252121;
   color: white;
-  width: 170px;
-  padding: 16px;
+  width: 137px;
+  padding: 12px;
   border-radius: 35px;
   font-weight: bold;
   font-family: system-ui;
   cursor: pointer;
-  /* Make sure the button sticks to the bottom */
-  align-self: flex-start; 
+  margin-top: 10px;
+
 }
 
+.received-btn {
+  background-color: #958c86;
+}
+
+.served-btn {
+  background-color: green;
+}
