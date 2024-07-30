@@ -3,7 +3,7 @@
     <button class="status-button received-btn" (click)="received()">Recived</button>
     <button class="status-button served-btn" (click)="served()">Served</button>
   </div>
-  <div *ngFor="let card of orders" class="card">
+  <div *ngFor="let card of paginatedOrders" class="card">
     <div class="card-header">
       <div class="card-id">{{ card.tableNumber }}</div>
       <div class="card-meta">{{ card.id }}</div>
@@ -22,8 +22,14 @@
       </div>
     </div>
     <div class="card-footer">
-      <button  *ngIf="card.status != 'served'" class="filter-button" (click)="updateOrderStatus(card)">Mark as served</button>
+      <button *ngIf="card.status != 'served'" class="filter-button" (click)="updateOrderStatus(card)">Mark as served</button>
       <button *ngIf="card.status === 'served'" class="filter-button served-btn" (click)="updateOrderStatus(card)">Served</button>
     </div>
   </div>
+</div>
+  <!-- Pagination controls -->
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div>

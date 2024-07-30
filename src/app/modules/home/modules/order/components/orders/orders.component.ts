@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Subscription, switchMap, timer } from 'rxjs';
 import { OrderService } from '../../services/order.service';
 
 interface Order {
@@ -20,10 +19,10 @@ interface Order {
 export class OrdersComponent implements OnInit, OnDestroy {
   orders: Order[] = [];
   currentPage: number = 1;
-  ordersPerPage: number = 5;
+  ordersPerPage: number = 8;
   private subscription: Subscription | null = null;
   realList: any[] = [];
-
+  
   constructor(private orderService: OrderService) {}
 
   ngOnInit() {
@@ -32,12 +31,10 @@ export class OrdersComponent implements OnInit, OnDestroy {
     // ).subscribe(orders => {
     //   this.orders = orders.filter(order => order.status === 'active');
     // });
-  this.orderService.getOrders().subscribe(orders => {
-    debugger
-      this.orders = orders
-      this.realList = [...orders]
+    this.orderService.getOrders().subscribe(orders => {
+      this.orders = orders;
+      this.realList = [...orders];
     });
-    
   }
 
   ngOnDestroy() {
@@ -52,8 +49,12 @@ export class OrdersComponent implements OnInit, OnDestroy {
     return this.orders.slice(startIndex, endIndex);
   }
 
+  get totalPages(): number {
+    return Math.ceil(this.orders.length / this.ordersPerPage);
+  }
+
   nextPage() {
-    if ((this.currentPage * this.ordersPerPage) < this.orders.length) {
+    if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
   }
@@ -65,7 +66,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   updateOrderStatus(order: any) {
-    debugger
     this.orderService.updateOrderStatus(order.id, 'inactive').subscribe((response) => {
       if(response.message === "Order status updated successfully") {
         const res = this.orders.filter(o => o.id === order.id);
@@ -73,10 +73,12 @@ export class OrdersComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   served() {
-   this.orders = this.realList.filter(x=>x.status === "served");
+    this.orders = this.realList.filter(x => x.status === "served");
   }
+
   received() {
-    this.orders = this.realList.filter(x=>x.status === "received");
+    this.orders = this.realList.filter(x => x.status === "received");
   }
 }

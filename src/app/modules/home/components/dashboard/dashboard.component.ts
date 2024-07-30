@@ -15,7 +15,7 @@ export class DashboardComponent {
     this.menuList = [
       {name: 'ORDERS', routerLink: 'order', count: 0},
       {name: 'MENU', routerLink: 'menu', count: 0},
-      {name: 'SALES', routerLink: 'sales', count: 0}
+      // {name: 'SALES', routerLink: 'sales', count: 0}
     ]; 
   }
 
