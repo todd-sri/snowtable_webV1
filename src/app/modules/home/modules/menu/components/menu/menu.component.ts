@@ -82,9 +82,8 @@ export class MenuComponent implements OnInit {
 
   loadMenuItems() {
     this.menuService.getMenuItems(this.userData).subscribe((data : any) => {
-      debugger
       this.loading = false;
-      this.rowData = data;
+      this.rowData = data
     });
   }
 
