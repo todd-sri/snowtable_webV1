@@ -26,16 +26,20 @@ export class OrdersComponent implements OnInit, OnDestroy {
   constructor(private orderService: OrderService) {}
 
   ngOnInit() {
-    this.subscription = timer(0, 5000).pipe(
-      switchMap(() => this.orderService.getOrders())
-    ).subscribe(orders => {
-      this.orderService.getOrders().subscribe(orders => {
-        this.orders = orders.reverse();
-        this.realList = [...orders];
-        this.received();
-      });
+    // this.subscription = timer(0, 5000).pipe(
+    //   switchMap(() => this.orderService.getOrders())
+    // ).subscribe(orders => {
+    //   this.orderService.getOrders().subscribe(orders => {
+    //     this.orders = orders.reverse();
+    //     this.realList = [...orders];
+    //     this.received();
+    //   });
+    // });
+    this.orderService.getOrders().subscribe(orders => {
+      this.orders = orders.reverse();
+      this.realList = [...orders];
+      this.received();
     });
-
   }
 
   ngOnDestroy() {

@@ -22,6 +22,7 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {
+    debugger
     const resUuid = localStorage.getItem('res_uuid');
     if (resUuid) {
       const params = new HttpParams().set('res_uuid', resUuid);
