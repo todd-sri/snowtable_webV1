@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'home', component: DashboardComponent, loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
   { path: 'confirm', component: ConfirmationComponent},
-  { path: 'home/order', component: OrdersComponent },
-  { path: 'home/menu', component: MenuComponent },
+  { path: 'home/order', component: OrdersComponent,loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
+  { path: 'home/menu', component: MenuComponent, loadChildren: () => import('./modules/home/modules/menu/menu.module').then(m => m.MenuModule) },
   { path: '**', redirectTo: '' }
   
 ];
