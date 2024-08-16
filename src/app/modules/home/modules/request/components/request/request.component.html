@@ -1,0 +1,27 @@
+<div class="event-container">
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Event ID</th>
+          <th>Event Name</th>
+          <th>Table No</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of requestList | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+          <td>{{ event.event_id }}</td>
+          <td>{{ event.event_name }}</td>
+          <td>{{ event.table_no }}</td>
+          <td>
+            <button class="action-button complete-button" (click)="completeEvent(event)">Complete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination-controls">
+      <button [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
+      <button [disabled]="currentPage >= (requestList.length / itemsPerPage)" (click)="nextPage()">Next</button>
+    </div>
+  </div>
+  

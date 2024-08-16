@@ -3,10 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrdersComponent } from './modules/order/components/orders/orders.component';
 
-// const routes: Routes = [
-//   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-//   { path: 'dashboard', component: DashboardComponent }
-// ];
 
 const routes: Routes = [
   {
@@ -21,9 +17,12 @@ const routes: Routes = [
           {
               path: 'order',
               loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule)
-          },
-
+          }
       ]
+  },
+  {
+    path: 'request',
+    loadChildren: () => import('./modules/request/request.module').then(m => m.RequestModule)
   },
   {
     path: 'menu',

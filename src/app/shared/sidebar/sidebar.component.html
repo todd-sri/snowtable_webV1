@@ -3,9 +3,9 @@
     <div class="menu-left">
       <img src="assets/snowtableratri.png" alt="Logo" class="logo">
       <div class="menu-buttons" *ngFor="let menu of menuList">
-        <div (click)="navigateaRoute($event)" routerLinkActive="active" [routerLink]="menu.routerLink">
+        <div *ngIf="menu.display" (click)="navigateaRoute($event)" routerLinkActive="active" [routerLink]="menu.routerLink">
           <i class="menu-icon" [ngClass]="getMenuIcon(menu.name)"></i>
-          <span class="menu-text">{{ menu.name }}</span>
+          <span class="menu-text">{{ menu.name }} &nbsp;<strong *ngIf="menu.count > 0" class="count-circle">{{menu.count}}</strong></span>
         </div>
       </div>
     </div>

@@ -26,7 +26,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
   constructor(private orderService: OrderService) {}
 
   ngOnInit() {
-    debugger
     // this.subscription = timer(0, 5000).pipe(
     //   switchMap(() => this.orderService.getOrders())
     // ).subscribe(orders => {
@@ -37,7 +36,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
     //   });
     // });
     this.orderService.getOrders().subscribe(orders => {
-      debugger
       this.orders = orders.reverse();
       this.realList = [...orders];
       this.received();

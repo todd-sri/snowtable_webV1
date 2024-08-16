@@ -18,7 +18,9 @@ interface Order {
 export class OrderService {
   private apiUrl = 'https://snowtable.in/ordersgetapi/orddetails'; // Replace with your API URL
   private orderStatusUrl = 'https://snowtable.in/orderstatusapi/orderstatusapi?res_uuid=RT002';
-
+  private requestUrl = 'https://snowtable.in/hotelsanghatiapis/getapi';
+  private completeRequest = 'https://your-api-endpoint.com/api/completeEvent';
+  private countsUrl = 'https://snowtable.in/countsdata/getlekka';
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {
@@ -27,6 +29,17 @@ export class OrderService {
     if (resUuid) {
       const params = new HttpParams().set('res_uuid', resUuid);
       return this.http.get<any[]>(this.apiUrl, { params });
+    } else {
+      return of([]);
+    }
+  }
+
+  getRequests(): any{
+    debugger
+    const resUuid = localStorage.getItem('res_uuid');
+    if (resUuid) {
+      const params = new HttpParams().set('res_uuid', resUuid);
+      return this.http.get<any[]>(this.requestUrl, { params });
     } else {
       return of([]);
     }
@@ -42,4 +55,21 @@ export class OrderService {
     }
   
   }
+  completeEvent(eventId: string): Observable<any> {
+    debugger
+    return this.http.post(this.completeRequest, { event_id: eventId });
+  }
+  getMenuCounts(): Observable<any> {
+    debugger
+    const resUuid = localStorage.getItem('res_uuid');
+    if (resUuid) {
+      const params = new HttpParams().set('res_uuid', resUuid);
+      return this.http.get<any[]>(this.countsUrl, { params });
+    } else {
+      return of([]);
+    }
+  }
+
+  
+
 }

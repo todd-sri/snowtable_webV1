@@ -60,6 +60,10 @@ body {
   background-color: white;
   color: black;
   font-weight: bold;
+  .count-circle {
+    background-color: black;
+    color: white;
+  }
 }
 
 .menu-icon {
@@ -83,4 +87,17 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.count-circle {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
 }

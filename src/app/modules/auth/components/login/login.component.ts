@@ -120,6 +120,7 @@ export class LoginComponent implements OnInit {
         next: (data: any) => {
           if (data.status) {
             localStorage.setItem('res_uuid', data.res_uuid);
+            localStorage.setItem('hotelStatus', data.hotel_status);
             this.router.navigate(['/home']);
           } else {
             this.router.navigate(['/confirm']);

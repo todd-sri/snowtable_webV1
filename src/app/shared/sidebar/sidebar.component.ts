@@ -24,6 +24,8 @@ export class SidebarComponent {
         return 'fa fa-list';
       case 'SALES':
         return 'fa fa-chart-line';
+      case 'REQUESTS':
+        return 'fa-solid fa-phone';
       default:
         return '';
     }
