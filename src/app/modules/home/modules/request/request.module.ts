@@ -9,11 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { SuccessPopupComponent } from '../../../../shared/success-popup/success-popup.component';
 
 
 @NgModule({
   declarations: [
-    RequestComponent
+    RequestComponent,
+    SuccessPopupComponent
   ],
   imports: [
     CommonModule,
@@ -22,8 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
-    
+    MatIconModule,
+
 
 
   ]

@@ -19,7 +19,7 @@ export class OrderService {
   private apiUrl = 'https://snowtable.in/ordersgetapi/orddetails'; // Replace with your API URL
   private orderStatusUrl = 'https://snowtable.in/orderstatusapi/orderstatusapi?res_uuid=RT002';
   private requestUrl = 'https://snowtable.in/hotelsanghatiapis/getapi';
-  private completeRequest = 'https://your-api-endpoint.com/api/completeEvent';
+  private completeRequest = 'https://snowtable.in/hotelsanghatiapis/compapi';
   private countsUrl = 'https://snowtable.in/countsdata/getlekka';
   constructor(private http: HttpClient) {}
 
@@ -57,7 +57,7 @@ export class OrderService {
   }
   completeEvent(eventId: string): Observable<any> {
     debugger
-    return this.http.post(this.completeRequest, { event_id: eventId });
+    return this.http.post(this.completeRequest, { event_id: eventId , res_uuid: localStorage.getItem('res_uuid')});
   }
   getMenuCounts(): Observable<any> {
     debugger

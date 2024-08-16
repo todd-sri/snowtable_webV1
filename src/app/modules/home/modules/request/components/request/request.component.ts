@@ -21,7 +21,8 @@ interface RequestData {
 export class RequestComponent implements OnInit {
   requestList: Event[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 10;
+  showPopup = false;
 
   constructor(private request: OrderService) {
     
@@ -54,9 +55,15 @@ export class RequestComponent implements OnInit {
   completeEvent(event: Event): void {
     debugger
     this.request.completeEvent(event.event_id).subscribe((data)=>{
+      if(data.message === 'Completed event created successfully') {
+      this.showPopup = true;
       this.requestList = this.requestList.filter(e => e.event_id !== event.event_id);
+      }
       // this.getRequests();
     });
+  }
+  handlePopupClose(): void {
+    this.showPopup = false; // Hide the popup
   }
 
 

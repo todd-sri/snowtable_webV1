@@ -24,4 +24,4 @@
       <button [disabled]="currentPage >= (requestList.length / itemsPerPage)" (click)="nextPage()">Next</button>
     </div>
   </div>
-  
+  <app-success-popup [isVisible]="showPopup" (onClose)="handlePopupClose()"></app-success-popup>

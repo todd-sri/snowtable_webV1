@@ -20,6 +20,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SnowtableComponent } from './modules/auth/components/snowtable/snowtable.component';
 import { SnowtableV1Component } from './modules/auth/components/snowtable-v1/snowtable-v1.component';
 import { SnowCrystalLoaderComponent } from './shared/snow-crystal-loader/snow-crystal-loader.component';
+import { SuccessPopupComponent } from './shared/success-popup/success-popup.component';
 // import { RegistrationComponent } from './modules/auth/components/registration/registration.component';
 
 
@@ -32,7 +33,8 @@ import { SnowCrystalLoaderComponent } from './shared/snow-crystal-loader/snow-cr
     DeleteButtonComponent,
     SnowtableComponent,
     SnowtableV1Component,
-    SnowCrystalLoaderComponent
+    SnowCrystalLoaderComponent,
+    
   ],
   imports: [
     BrowserModule,

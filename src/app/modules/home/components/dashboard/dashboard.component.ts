@@ -25,14 +25,9 @@ export class DashboardComponent {
   }
 
   fetchMenuCounts(): void {
-    // this.menuList[0].count = 2;
-    // this.menuList[2].count = 4;
     this.orderService.getMenuCounts().subscribe(
       (data: any) => {
-        debugger
-        // Assuming the API returns counts for orders, menu, and requests
         this.menuList[0].count = data.unique_order_count;
-        // this.menuList[1].count = data.menuCount;
         this.menuList[2].count = data.unique_event_count;
       },
       error => {
