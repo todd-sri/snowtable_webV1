@@ -23,7 +23,7 @@
     </div>
     <div class="card-footer">
       <button *ngIf="card.status != 'served'" class="filter-button" (click)="updateOrderStatus(card)">Mark as served</button>
-      <button *ngIf="card.status === 'served'" class="filter-button served-btn" (click)="updateOrderStatus(card)">Served</button>
+      <!-- <button *ngIf="card.status === 'served'" class="filter-button served-btn" (click)="updateOrderStatus(card)">Served</button> -->
     </div>
   </div>
 </div>
@@ -33,3 +33,5 @@
   <span>Page {{ currentPage }} of {{ totalPages }}</span>
   <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div>
+
+<app-success-popup [isVisible]="showPopup" (onClose)="handlePopupClose()"></app-success-popup>

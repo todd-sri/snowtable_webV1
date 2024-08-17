@@ -10,12 +10,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SuccessPopupComponent } from '../../../../shared/success-popup/success-popup.component';
+import { SharedModule } from '../../../../sharedModule';
 
 
 @NgModule({
   declarations: [
-    RequestComponent,
-    SuccessPopupComponent
+    RequestComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +25,7 @@ import { SuccessPopupComponent } from '../../../../shared/success-popup/success-
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-
+    SharedModule
 
 
   ]

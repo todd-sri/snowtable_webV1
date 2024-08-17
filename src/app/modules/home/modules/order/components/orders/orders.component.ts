@@ -22,7 +22,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
   ordersPerPage: number = 8;
   private subscription: Subscription | null = null;
   realList: any[] = [];
-  
+  showPopup = false;
+
   constructor(private orderService: OrderService) {}
 
   ngOnInit() {
@@ -73,8 +74,11 @@ export class OrdersComponent implements OnInit, OnDestroy {
   updateOrderStatus(order: any) {
     this.orderService.updateOrderStatus(order.id, 'inactive').subscribe((response) => {
       if(response.message === "Order status updated successfully") {
+        debugger
         const res = this.orders.filter(o => o.id === order.id);
         res[0].status = "served";
+        this.orders = this.orders.filter(x => x.status === 'received');
+        this.showPopup = true; 
       }
     });
   }
@@ -86,4 +90,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
   received() {
     this.orders = this.realList.filter(x => x.status === "received");
   }
+  handlePopupClose(): void {
+    this.showPopup = false; // Hide the popup
+  }
+
 }
