@@ -4,7 +4,8 @@
         <tr>
           <th>Event ID</th>
           <th>Event Name</th>
-          <th>Table No</th>
+          <th>Comment</th>
+          <th>Room No</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -12,6 +13,7 @@
         <tr *ngFor="let event of requestList | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
           <td>{{ event.event_id }}</td>
           <td>{{ event.event_name }}</td>
+          <td>{{event.event_comment}}</td>
           <td>{{ event.table_no }}</td>
           <td>
             <button class="action-button complete-button" (click)="completeEvent(event)">Complete</button>

@@ -9,6 +9,7 @@ export class SnowCrystalLoaderComponent  implements OnChanges {
   @Input() isLoading!: boolean;
 
   ngOnChanges(changes: SimpleChanges): void {
+    debugger
     if (changes['isLoading']) {
       this.isLoading = changes['isLoading'].currentValue;
       // Logic to handle changes in the `isLoading` property can be added here

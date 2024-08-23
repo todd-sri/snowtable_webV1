@@ -75,6 +75,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
     this.newItems = [];
     this.userData = this.loginService.getUserData();
     this.loadMenuItems();

@@ -1,5 +1,5 @@
 
-<app-snow-crystal-loader [isLoading]="loading"></app-snow-crystal-loader>
+<app-snow-crystal-loader *ngIf="loading"  [isLoading]="loading"></app-snow-crystal-loader>
 <button  *ngIf="!loading" class="cool-button" (click)="addRow()">Add Item</button>
 <ag-grid-angular *ngIf="!loading"
   style="width: 100%; height: 500px;"

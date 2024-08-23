@@ -4,6 +4,7 @@ import { OrderService } from '../../../order/services/order.service';
 interface Event {
   event_id: string;
   event_name: string;
+  event_comment: string;
   table_no: number;
 }
 
