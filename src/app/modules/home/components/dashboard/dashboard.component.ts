@@ -13,7 +13,7 @@ export class DashboardComponent {
   selectedMenu: string = '';
 
   constructor(private orderService: OrderService) {
-    debugger
+    
     this.menuList = [
       {name: 'ORDERS', routerLink: 'order', count: 0, display: 1},
       {name: 'MENU', routerLink: 'menu', count: 0, display : 1},

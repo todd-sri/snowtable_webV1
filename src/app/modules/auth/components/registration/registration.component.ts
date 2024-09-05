@@ -50,7 +50,6 @@ export class RegistrationComponent {
     this.register.saveRestaurantDetails(this.restaurant)
       .subscribe({
         next: response => {
-          debugger
           this.router.navigate(['/confirm']);
           console.log('Restaurant saved', response);
         },

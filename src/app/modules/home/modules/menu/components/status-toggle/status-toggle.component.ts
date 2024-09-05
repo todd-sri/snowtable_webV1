@@ -24,7 +24,7 @@ export class StatusToggleComponent implements ICellRendererAngularComp {
 
   // Handle the toggle switch change event
   onToggleChange(event: any) {
-    debugger
+    
     const checked = event.target.checked;
     this.params.data.status = !checked? 0 : 1; // Update the cell'
     // this.statusChange.emit({

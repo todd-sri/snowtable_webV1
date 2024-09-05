@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, switchMap, timer } from 'rxjs';
 import { OrderService } from '../../services/order.service';
+import { NotificationService } from '../../../../../../shared/services/notification.service';
 
 interface Order {
   id: number;
@@ -24,22 +25,26 @@ export class OrdersComponent implements OnInit, OnDestroy {
   realList: any[] = [];
   showPopup = false;
 
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService, private notificationService: NotificationService) {}
 
   ngOnInit() {
-    // this.subscription = timer(0, 5000).pipe(
-    //   switchMap(() => this.orderService.getOrders())
-    // ).subscribe(orders => {
-    //   this.orderService.getOrders().subscribe(orders => {
-    //     this.orders = orders.reverse();
-    //     this.realList = [...orders];
-    //     this.received();
-    //   });
-    // });
-    this.orderService.getOrders().subscribe(orders => {
-      this.orders = orders.reverse();
-      this.realList = [...orders];
-      this.received();
+    if(this.orders.length === 0) {
+      this.orderService.getOrders().subscribe(orders => {
+        this.orders = orders.reverse();
+        this.realList = [...orders];
+        this.received();
+      });
+    }
+    this.subscription = timer(0, 9000).pipe(
+      switchMap(() => this.orderService.getOrders())
+    ).subscribe(orders => {
+      this.orderService.getOrders().subscribe(orders => {
+        if(this.realList.length != orders.length){
+           this.notificationService.showNotification('New order received');
+           this.orders = orders.reverse();
+           this.realList = [...orders];
+        }
+      });
     });
   }
 
@@ -74,7 +79,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   updateOrderStatus(order: any) {
     this.orderService.updateOrderStatus(order.id, 'inactive').subscribe((response) => {
       if(response.message === "Order status updated successfully") {
-        debugger
+        
         const res = this.orders.filter(o => o.id === order.id);
         res[0].status = "served";
         this.orders = this.orders.filter(x => x.status === 'received');
@@ -93,5 +98,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
   handlePopupClose(): void {
     this.showPopup = false; // Hide the popup
   }
+
 
 }

@@ -24,7 +24,7 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {
-    debugger
+    
     const resUuid = localStorage.getItem('res_uuid');
     if (resUuid) {
       const params = new HttpParams().set('res_uuid', resUuid);
@@ -35,7 +35,7 @@ export class OrderService {
   }
 
   getRequests(): any{
-    debugger
+    
     const resUuid = localStorage.getItem('res_uuid');
     if (resUuid) {
       const params = new HttpParams().set('res_uuid', resUuid);
@@ -56,11 +56,11 @@ export class OrderService {
   
   }
   completeEvent(eventId: string): Observable<any> {
-    debugger
+    
     return this.http.post(this.completeRequest, { event_id: eventId , res_uuid: localStorage.getItem('res_uuid')});
   }
   getMenuCounts(): Observable<any> {
-    debugger
+    
     const resUuid = localStorage.getItem('res_uuid');
     if (resUuid) {
       const params = new HttpParams().set('res_uuid', resUuid);

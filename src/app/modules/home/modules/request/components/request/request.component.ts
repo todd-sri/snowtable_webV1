@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrderService } from '../../../order/services/order.service';
+import { Subscription, switchMap, timer } from 'rxjs';
+import { NotificationService } from '../../../../../../shared/services/notification.service';
 
 interface Event {
   event_id: string;
@@ -24,18 +26,29 @@ export class RequestComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
   showPopup = false;
-
-  constructor(private request: OrderService) {
-    
+  private subscription: Subscription | null = null;
+  
+  constructor(private request: OrderService, private notificationService: NotificationService) {  
   }
-
   ngOnInit() {
-   this.getRequests()
+    if(this.requestList.length === 0) {
+      this.getRequests()
+    } 
+    this.subscription = timer(0, 9000).pipe(
+      switchMap(() => this.request.getRequests())
+    ).subscribe(orders => {
+      this.request.getRequests().subscribe((data: RequestData) => {
+          if(this.requestList.length != data.events.length){
+            this.notificationService.showNotification('You have new  '+ data.events[data.events.length-1].event_name+' request');
+            this.requestList = data.events;
+          }
+      });
+    });
+
   }
   getRequests() {
     this.request.getRequests().subscribe((data: RequestData) => {
-      debugger
-      this.requestList = data.events; // Correctly accessing 'events' array
+      this.requestList = data.events; 
     });
 
     
@@ -54,7 +67,6 @@ export class RequestComponent implements OnInit {
   }
 
   completeEvent(event: Event): void {
-    debugger
     this.request.completeEvent(event.event_id).subscribe((data)=>{
       if(data.message === 'Completed event created successfully') {
       this.showPopup = true;

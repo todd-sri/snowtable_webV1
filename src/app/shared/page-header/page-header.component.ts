@@ -16,7 +16,7 @@ export class PageHeaderComponent {
   }
 
   onLogout() {
-    debugger
+    
     this.authService.signOut();
     // Implement logout logic here
     console.log('Logging out...');

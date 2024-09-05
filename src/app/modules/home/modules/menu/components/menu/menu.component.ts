@@ -75,7 +75,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
+    
     this.newItems = [];
     this.userData = this.loginService.getUserData();
     this.loadMenuItems();
@@ -159,7 +159,7 @@ export class MenuComponent implements OnInit {
   }
 
   onStatusChange(rowData: any) {
-    debugger
+    
     this.isUpdated = true;
     this.isSaved = false;
     rowData.res_uuid = localStorage.getItem('res_uuid');

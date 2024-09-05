@@ -11,7 +11,7 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   getRequests(): Observable<any[]> {
-    debugger
+    
     const resUuid = localStorage.getItem('res_uuid');
     if (resUuid) {
       const params = new HttpParams().set('res_uuid', resUuid);
