@@ -36,6 +36,49 @@
                         <button class="btn" (click)="login()">Login</button>
                         <button class="btn" (click)="createAccount()">Signup</button>
                     </div>
+                    <div class="user-login-link">
+                        <a href="#" (click)="userLogin()">User Login?</a>
+                    </div>     
+                    <!-- <div class="user-login-card" *ngIf="showUserLogin">
+                        <h3></h3>
+                        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                          <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Enter your email"
+                              required
+                              ngModel
+                              name="email"
+                              #email="ngModel"
+                            />
+                          </div>
+                          <button type="submit" class="submit-btn" [disabled]="!loginForm.valid">
+                            Submit
+                          </button>
+                        </form>
+                      </div> -->
+                      
+
+                      <div class="user-login-card" *ngIf="showUserLogin">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                          <div class="form-group">
+                            <input type="email" class="form-control"
+                              placeholder="Enter your email"
+                              formControlName="email"/>
+                            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+                              <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>
+                              <span *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+                              <!-- <span *ngIf="loginForm.get('email')?.errors?.['notAllowed']">This email is not allowed.</span> -->
+                            </div>
+                            <div *ngIf="loading" class="progress-bar-container">
+                                <div class="progress-bar"></div>
+                              </div>
+                          </div>
+                          <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">
+                            Submit
+                          </button>
+                        </form>
+                      </div>
+                      
+
                 </div>
             </ng-template>
         </div>

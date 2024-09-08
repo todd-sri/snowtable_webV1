@@ -29,14 +29,6 @@ export class RegistrationComponent {
 
   constructor(private http: HttpClient, private router: Router, private register : RegistrationService) { }
 
-  // onSubmit() {
-  //   if (this.restaurant.res_name && this.restaurant.owner_name && this.restaurant.phone) {
-  //     this.saveRestaurant();
-  //   } else {
-   
-  //   }
-  // }
-
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.loading = true;

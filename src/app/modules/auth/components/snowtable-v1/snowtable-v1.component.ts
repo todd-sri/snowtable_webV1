@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-snowtable-v1',
@@ -16,8 +18,16 @@ export class SnowtableV1Component {
   sentence3: { char: string, isSpace: boolean }[] = [];
 
   showLogin: boolean = false;
-
-  constructor(private router: Router) {}
+  showUserLogin:  boolean = false;
+  allowedEmails: string[] = ['kitchen@nakshatra.in'];
+  loginForm: FormGroup;
+  loading: boolean = false;
+ 
+  constructor(private router: Router, private fb: FormBuilder, private loginService: LoginService) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
 
   ngOnInit(): void {
     this.sentence1 = this.createSentenceArray(this.text1);
@@ -32,6 +42,15 @@ export class SnowtableV1Component {
     }));
   }
 
+    // Custom validator to accept only specific emails
+    allowedEmailValidator(control: AbstractControl): ValidationErrors | null {
+      if (control.value && !this.allowedEmails.includes(control.value)) {
+        return { notAllowed: true };
+      }
+      return null;
+    }
+  
+
   login() {
     this.router.navigate(['/login']);
   }
@@ -39,6 +58,35 @@ export class SnowtableV1Component {
   createAccount() {
     this.router.navigate(['/register']);
   }
+  
+  onSubmit() {
+    debugger
+    this.loading = true;
+    this.loginService.userLogin(this.loginForm.value.email).subscribe({
+      next: (data: any) => {
+        if (data) {
+          localStorage.setItem('res_uuid', data.res_uuid);
+          localStorage.setItem('hotelStatus', data.hotel_status);
+          localStorage.setItem('role', data.role); 
+          this.router.navigate(['/home']);
+        } else {
+          this.router.navigate(['/confirm']);
+        }
+      },
+      error: (err) => {
+        this.loading = false;
+        console.error(err);
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    });
+  }
+
+  userLogin() {
+   this.showUserLogin = true;
+  }
+
 
 
 }

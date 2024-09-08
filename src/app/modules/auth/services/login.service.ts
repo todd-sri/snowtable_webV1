@@ -10,12 +10,17 @@ export class LoginService {
 
   private userData: any;
   private apiUrl = 'https://snowtable.in/loginapi/api' // Replace with your API endpoint
+  private userLoginUrl = 'https://snowtable.in/hotelpermissions/api?emp_email='
 
   constructor(private http: HttpClient) { }
 
   // Method to call the API with email as parameter
   login(userDetails: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, userDetails)
+  }
+
+  userLogin(email: any): Observable<any> {
+    return this.http.get<any[]>(this.userLoginUrl+email);
   }
 
   setUserData(data: any): void {

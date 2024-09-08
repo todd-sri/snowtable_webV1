@@ -13,12 +13,28 @@ export class DashboardComponent {
   selectedMenu: string = '';
 
   constructor(private orderService: OrderService) {
-    
-    this.menuList = [
-      {name: 'ORDERS', routerLink: 'order', count: 0, display: 1},
-      {name: 'MENU', routerLink: 'menu', count: 0, display : 1},
-      {name: 'REQUESTS', routerLink: 'request', count: 0, display: localStorage.getItem('hotelStatus') === "0"? 0 : 1},
-    ]; 
+    debugger
+    const role = localStorage.getItem('role');
+    if (role === 'admin' || role === "") {
+      this.menuList = [
+        { name: 'ORDERS', routerLink: 'order', count: 0, display: 1 },
+        { name: 'MENU', routerLink: 'menu', count: 0, display: 1 },
+        { name: 'REQUESTS', routerLink: 'request', count: 0, display: localStorage.getItem('hotelStatus') === "0" ? 0 : 1 },
+      ];
+    } else if (role === 'kitchen') {
+      this.menuList = [
+        { name: 'ORDERS', routerLink: 'order', count: 0, display: 1 },
+      ];
+    } else {
+      // Handle other roles or scenarios if needed
+      this.menuList = [];
+    }
+
+    // this.menuList = [
+    //   {name: 'ORDERS', routerLink: 'order', count: 0, display: localStorage.getItem('role') === 'kitchen'? 1 : 0},
+    //   {name: 'MENU', routerLink: 'menu', count: 0, display :  localStorage.getItem('role') !== 'kitchen'? 1 : 0},
+    //   {name: 'REQUESTS', routerLink: 'request', count: 0, display: localStorage.getItem('hotelStatus') === "0"? 0 : 1},
+    // ]; 
   }
   ngOnInit(): void {
     this.fetchMenuCounts();
