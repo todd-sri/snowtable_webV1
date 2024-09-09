@@ -1,7 +1,9 @@
 
-<app-snow-crystal-loader *ngIf="loading"  [isLoading]="loading"></app-snow-crystal-loader>
-<button  *ngIf="!loading" class="cool-button" (click)="addRow()">Add Item</button>
-<ag-grid-angular *ngIf="!loading"
+<div *ngIf="isLoading" class="loader-container">
+  <div class="spinner"></div>
+</div>
+<button  *ngIf="!isLoading" class="cool-button" (click)="addRow()">Add Item</button>
+<ag-grid-angular *ngIf="!isLoading"
   style="width: 100%; height: 500px;"
   class="ag-theme-alpine"
   [columnDefs]="columnDefs"
@@ -15,7 +17,7 @@
   (cellValueChanged)="onCellValueChanged($event)">
 </ag-grid-angular>
 
-<button  *ngIf="rowData.length > 0 && !loading" class="save-button" [ngClass]="{ 'saved': isSaved, 'enabled': isUpdated }" [disabled]="!isUpdated"
+<button  *ngIf="rowData.length > 0 && !isLoading" class="save-button" [ngClass]="{ 'saved': isSaved, 'enabled': isUpdated }" [disabled]="!isUpdated"
 (click)="save()"> {{ buttonText }}</button>
 
 

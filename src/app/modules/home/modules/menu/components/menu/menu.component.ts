@@ -13,6 +13,8 @@ import { LoginService } from '../../../../../auth/services/login.service';
 })
 export class MenuComponent implements OnInit {
   private gridApi!: GridApi;
+isLoading = true;
+
 
   columnDefs: ColDef[] = [
     { field: 'item_name', headerName: 'Item Name', sortable: true, filter: true,editable: true },
@@ -83,8 +85,9 @@ export class MenuComponent implements OnInit {
 
   loadMenuItems() {
     this.menuService.getMenuItems(this.userData).subscribe((data : any) => {
-      this.loading = false;
       this.rowData = data
+      this.isLoading = false;
+
     });
   }
 
