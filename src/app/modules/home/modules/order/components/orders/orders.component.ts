@@ -18,6 +18,7 @@ interface Order {
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit, OnDestroy {
+  isLoading = true;
   orders: Order[] = [];
   currentPage: number = 1;
   ordersPerPage: number = 8;
@@ -33,6 +34,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
         this.orders = orders.reverse();
         this.realList = [...orders];
         this.received();
+        this.isLoading = false;
       });
     }
     this.subscription = timer(0, 9000).pipe(
@@ -43,6 +45,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
            this.notificationService.showNotification('New order received');
            this.orders = orders.reverse();
            this.realList = [...orders];
+           this.isLoading = false;
         }
       });
     });
